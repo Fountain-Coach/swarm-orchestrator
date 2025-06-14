@@ -47,7 +47,7 @@ def test_batch_deploy(client):
     assert response.status_code == 200
     result = response.json()
     assert result["nginx_alpine"]["status"] == "ok"
-    assert result["nonexistent_service"]["status"] == "failed"
+    assert result["nonexistent_service"]["status"] == "not found"
 
 
 def test_get_config(client):
@@ -67,7 +67,7 @@ def test_patch_config(client):
     assert response.status_code == 200
     config = response.json()
     assert config["env"].get("TEST_VAR") == "1234"
-    assert "8086" in config["ports"]
+    assert config["ports"].get("8086") == 80
 
 
 def test_logs(client):
