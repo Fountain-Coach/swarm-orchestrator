@@ -35,9 +35,12 @@ jobs:
       - name: Run tests
         run: |
           IMAGE_PATH=$(echo "$REGISTRY/$IMAGE_NAME/$SERVICE_NAME" | tr '[:upper:]' '[:lower:]')
-          docker run --rm -e RUN_TESTS=1 $IMAGE_PATH:latest
+          docker run --rm -e RUN_TESTS=1 $IMAGE_PATH:latest || exit 1
 
       - name: Push image
         run: |
           IMAGE_PATH=$(echo "$REGISTRY/$IMAGE_NAME/$SERVICE_NAME" | tr '[:upper:]' '[:lower:]')
           docker push $IMAGE_PATH:latest
+
+      - name: ✅ All steps passed
+        run: echo "Swarm Orchestrator build, test, and push completed successfully."
