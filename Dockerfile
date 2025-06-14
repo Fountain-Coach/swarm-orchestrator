@@ -1,20 +1,18 @@
 FROM python:3.11-slim
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends docker.io \
-    && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /app
 ENV PYTHONPATH=/app    
 
+# Install only what's needed
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
-    && pip install pytest httpx
+    && pip install --no-cache-dir pytest httpx
 
-COPY app/ ./app/
-COPY tests/ ./tests/
-COPY fountainai-stack.yml ./fountainai-stack.yml
+# Copy entire repo layout
+COPY . .
 
+# Expose for FastAPI
 EXPOSE 8000
 
+# Always call entrypoint.py
 CMD ["python", "app/entrypoint.py"]
