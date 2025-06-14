@@ -29,12 +29,15 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t $REGISTRY/$IMAGE_NAME/$SERVICE_NAME:latest .
+          IMAGE_PATH=$(echo "$REGISTRY/$IMAGE_NAME/$SERVICE_NAME" | tr '[:upper:]' '[:lower:]')
+          docker build -t $IMAGE_PATH:latest .
 
       - name: Run tests
         run: |
-          docker run --rm -e RUN_TESTS=1 $REGISTRY/$IMAGE_NAME/$SERVICE_NAME:latest
+          IMAGE_PATH=$(echo "$REGISTRY/$IMAGE_NAME/$SERVICE_NAME" | tr '[:upper:]' '[:lower:]')
+          docker run --rm -e RUN_TESTS=1 $IMAGE_PATH:latest
 
       - name: Push image
         run: |
-          docker push $REGISTRY/$IMAGE_NAME/$SERVICE_NAME:latest
+          IMAGE_PATH=$(echo "$REGISTRY/$IMAGE_NAME/$SERVICE_NAME" | tr '[:upper:]' '[:lower:]')
+          docker push $IMAGE_PATH:latest
