@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  planner:
+    image: fountainai/planner-service:latest
+    ports:
+      - target: 8000
+        published: 8012
+        protocol: tcp
+        mode: host
+    environment:
+      - SERVICE_NAME=planner
+
+  awareness:
+    image: fountainai/baseline-awareness-service:latest
+    ports:
+      - target: 8000
+        published: 8013
+        protocol: tcp
+        mode: host
+    environment:
+      - SERVICE_NAME=awareness
+
+  bootstrap:
+    image: fountainai/bootstrap-service:latest
+    ports:
+      - target: 8000
+        published: 8014
+        protocol: tcp
+        mode: host
+    environment:
+      - SERVICE_NAME=bootstrap

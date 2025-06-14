@@ -1,0 +1,27 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+*.sqlite
+*.db
+
+# MacOS artifacts
+.DS_Store
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Docker artifacts
+*.tar
+*.log
+
+# VSCode
+.vscode/
+
+# Coverage reports
+htmlcov/
+coverage.xml
