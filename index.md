@@ -3,8 +3,9 @@ title: Swarm Orchestrator
 description: Lightweight declarative container orchestrator for the FountainAI system.
 image: https://raw.githubusercontent.com/Fountain-Coach/swarm-orchestrator/main/assets/logo/swarm-logo.png
 ---
-
-![Swarm Orchestrator Logo](https://raw.githubusercontent.com/Fountain-Coach/swarm-orchestrator/main/assets/logo/swarm-logo.png#right-align)
+<p align="right">
+  <img src="https://raw.githubusercontent.com/Fountain-Coach/swarm-orchestrator/main/assets/logo/swarm-logo.png" alt="Swarm Orchestrator Logo" width="160"/>
+</p>
 
 
 # Swarm Orchestrator
